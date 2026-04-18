@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>30 Day Weight Loss Meal Plan</title>
+  <style>
+    :root {
+      --bg: #f4f7fb;
+      --card: #ffffff;
+      --text: #1f2937;
+      --muted: #6b7280;
+      --accent: #2563eb;
+      --accent-soft: #dbeafe;
+      --good: #166534;
+      --good-soft: #dcfce7;
+      --warn: #92400e;
+      --warn-soft: #fef3c7;
+      --border: #e5e7eb;
+      --shadow: 0 10px 30px rgba(0,0,0,0.08);
+      --radius: 18px;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: linear-gradient(180deg, #eef4ff 0%, var(--bg) 100%);
+      color: var(--text);
+    }
+
+    .app {
+      max-width: 520px;
+      margin: 0 auto;
+      padding: 16px 14px 40px;
+    }
+
+    .hero {
+      background: linear-gradient(135deg, #2563eb, #1d4ed8);
+      color: white;
+      padding: 20px;
+      border-radius: 24px;
+      box-shadow: var(--shadow);
+      margin-bottom: 14px;
+    }
+
+    .hero h1 {
+      margin: 0 0 8px;
+      font-size: 24px;
+      line-height: 1.2;
+    }
+
+    .hero p {
+      margin: 0;
+      opacity: 0.95;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+
+    .grid {
+      display: grid;
+      gap: 14px;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 16px;
+      box-shadow: var(--shadow);
+    }
+
+    .topline {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 12px;
+      flex-wrap: wrap;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      padding: 7px 11px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.2px;
+    }
+
+    .badge.blue { background: var(--accent-soft); color: var(--accent); }
+    .badge.green { background: var(--good-soft); color: var(--good); }
+    .badge.orange { background: var(--warn-soft); color: var(--warn); }
+
+    h2 {
+      margin: 0;
+      font-size: 18px;
+    }
+
+    h3 {
+      margin: 0 0 8px;
+      font-size: 15px;
+    }
+
+    .muted {
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.5;
+    }
+
+    .meal {
+      background: #f8fafc;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 12px;
+      margin-top: 10px;
+    }
+
+    .meal p {
+      margin: 0;
+      line-height: 1.5;
+      font-size: 14px;
+    }
+
+    .actions {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 14px;
+    }
+
+    button {
+      border: none;
+      border-radius: 12px;
+      padding: 12px 14px;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .primary {
+      background: var(--accent);
+      color: white;
+    }
+
+    .secondary {
+      background: #eef2ff;
+      color: #3730a3;
+    }
+
+    .ghost {
+      background: #f3f4f6;
+      color: #111827;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    .stat {
+      background: #f8fafc;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 12px;
+    }
+
+    .stat .label {
+      color: var(--muted);
+      font-size: 12px;
+      margin-bottom: 4px;
+    }
+
+    .stat .value {
+      font-size: 18px;
+      font-weight: 700;
+    }
+
+    .list {
+      margin: 10px 0 0;
+      padding-left: 18px;
+      line-height: 1.6;
+      font-size: 14px;
+    }
+
+    .footer-note {
+      margin-top: 14px;
+      font-size: 12px;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    .weight-row {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 10px;
+      margin-top: 12px;
+      align-items: center;
+    }
+
+    input[type="number"] {
+      width: 100%;
+      padding: 12px 14px;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      font-size: 14px;
+    }
+
+    .small {
+      font-size: 12px;
+      color: var(--muted);
+      margin-top: 8px;
+    }
+
+    @media (max-width: 420px) {
+      .stats { grid-template-columns: 1fr; }
+      .weight-row { grid-template-columns: 1fr; }
+      button { width: 100%; }
+    }
+  </style>
+</head>
+<body>
+  <div class="app">
+    <section class="hero">
+      <h1>30 Day Fat Loss Meal Plan</h1>
+      <p>Made for a 23 year old male, office job, 75 kg starting weight, goal 63 kg. This shows your meal plan by day and helps you stay on track.</p>
+    </section>
+
+    <section class="card">
+      <div class="topline">
+        <h2 id="todayTitle">Today</h2>
+        <span class="badge blue" id="dayBadge">Day 1 of 30</span>
+      </div>
+      <p class="muted" id="todayDate"></p>
+      <div class="stats">
+        <div class="stat">
+          <div class="label">Start Weight</div>
+          <div class="value">75 kg</div>
+        </div>
+        <div class="stat">
+          <div class="label">Goal Weight</div>
+          <div class="value">63 kg</div>
+        </div>
+      </div>
+      <div class="meal">
+        <h3>Breakfast</h3>
+        <p id="breakfast"></p>
+      </div>
+      <div class="meal">
+        <h3>Lunch Tiffin</h3>
+        <p id="lunch"></p>
+      </div>
+      <div class="meal">
+        <h3>Dinner</h3>
+        <p id="dinner"></p>
+      </div>
+      <div class="meal">
+        <h3>Today Focus</h3>
+        <p id="focus"></p>
+      </div>
+      <div class="actions">
+        <button class="primary" id="prevBtn">Previous Day</button>
+        <button class="secondary" id="nextBtn">Next Day</button>
+        <button class="ghost" id="resetBtn">Go To Today</button>
+      </div>
+    </section>
+
+    <section class="card">
+      <div class="topline">
+        <h2>Daily Rules</h2>
+        <span class="badge green">Simple</span>
+      </div>
+      <ul class="list">
+        <li>Only 3 main meals a day. No random snacking.</li>
+        <li>Drink 2.5 to 3 liters of water.</li>
+        <li>Walk at least 30 to 40 minutes daily.</li>
+        <li>Tea or coffee with no sugar, or very little sugar.</li>
+        <li>Momo or chowmein maximum once a week only.</li>
+        <li>At lunch take either rice or roti, not both together.</li>
+        <li>Dinner should be lighter than lunch.</li>
+      </ul>
+    </section>
+
+    <section class="card">
+      <div class="topline">
+        <h2>Weight Tracker</h2>
+        <span class="badge orange">Morning only</span>
+      </div>
+      <p class="muted">Measure after toilet, before breakfast, with the same clothes type or without clothes.</p>
+      <div class="weight-row">
+        <input type="number" step="0.1" id="weightInput" placeholder="Enter today's weight in kg" />
+        <button class="primary" id="saveWeightBtn">Save Weight</button>
+      </div>
+      <p class="small" id="weightStatus">No weight saved yet.</p>
+    </section>
+
+    <section class="card">
+      <div class="topline">
+        <h2>Add to Home Screen</h2>
+        <span class="badge blue">Phone use</span>
+      </div>
+      <ul class="list">
+        <li>Open this file in Chrome on your phone.</li>
+        <li>Tap the browser menu.</li>
+        <li>Choose <strong>Add to Home screen</strong>.</li>
+        <li>Then it will sit like an app icon on your mobile home page.</li>
+      </ul>
+      <p class="footer-note">This file works offline after opening. If you want later, we can also turn this into a stronger PWA app version.</p>
+    </section>
+  </div>
+
+  <script>
+    const plan = [
+      {
+        breakfast: "2 boiled eggs, 1 banana, black tea or black coffee without sugar.",
+        lunch: "2 roti, dal, mixed vegetable curry, cucumber slices.",
+        dinner: "2 boiled eggs, salad of cucumber and carrot, 1 roti.",
+        focus: "Start clean. No chowmein today. Walk 30 minutes after office or evening."
+      },
+      {
+        breakfast: "Oats with milk, 1 apple or banana.",
+        lunch: "1 cup rice, dal, spinach or any green sabji, small chicken portion.",
+        dinner: "Chicken soup or light chicken curry, salad, no rice.",
+        focus: "Drink water before lunch and dinner so you eat less."
+      },
+      {
+        breakfast: "2 eggs omelette with onion, 1 banana.",
+        lunch: "2 roti, dal, cauliflower or beans curry, curd if available.",
+        dinner: "Paneer or egg bhurji, cucumber salad, 1 roti.",
+        focus: "No sugary drinks today."
+      },
+      {
+        breakfast: "Oats, a few peanuts, black tea without sugar.",
+        lunch: "1 cup rice, dal, vegetable curry, small chicken or fish portion.",
+        dinner: "2 boiled eggs, tomato-cucumber salad, no rice.",
+        focus: "Try to reach 8000 steps today."
+      },
+      {
+        breakfast: "2 boiled eggs, 1 apple, black coffee.",
+        lunch: "2 roti, dal, pumpkin or bottle gourd sabji, salad.",
+        dinner: "Light dal soup, sauteed vegetables, 1 roti.",
+        focus: "Eat slowly. At least 15 minutes for each meal."
+      },
+      {
+        breakfast: "Oats with milk, 1 banana.",
+        lunch: "1 cup rice, dal, mixed veg, grilled or less-oil chicken.",
+        dinner: "Egg curry, cucumber slices, no rice.",
+        focus: "Weekend control day. No fast food."
+      },
+      {
+        breakfast: "2 egg omelette, black tea, 1 fruit.",
+        lunch: "Home tiffin: 2 roti, dal, any sabji, salad.",
+        dinner: "Chicken or paneer, salad, 1 roti.",
+        focus: "Weigh yourself tomorrow morning and check progress, not mood."
+      },
+      {
+        breakfast: "2 boiled eggs, banana, black coffee.",
+        lunch: "1 cup rice, dal, bitter gourd or green veg, curd.",
+        dinner: "2 eggs, salad, 1 roti.",
+        focus: "Second week starts. Stay strict with lunch tiffin."
+      },
+      {
+        breakfast: "Oats with milk, a few almonds or peanuts.",
+        lunch: "2 roti, dal, cabbage curry, small chicken portion.",
+        dinner: "Vegetable soup, paneer or egg, no rice.",
+        focus: "No biscuits with tea today."
+      },
+      {
+        breakfast: "2 egg omelette, 1 apple.",
+        lunch: "1 cup rice, dal, mixed vegetables, salad.",
+        dinner: "Chicken curry small portion, salad, 1 roti.",
+        focus: "Walk 10 minutes after dinner."
+      },
+      {
+        breakfast: "Oats, milk, banana.",
+        lunch: "2 roti, dal, beans or carrot-peas sabji, curd.",
+        dinner: "2 boiled eggs, salad, no rice.",
+        focus: "Office sitting day means more water and more walking breaks."
+      },
+      {
+        breakfast: "2 eggs, black tea without sugar, 1 fruit.",
+        lunch: "1 cup rice, dal, spinach, small fish or chicken.",
+        dinner: "Light veg curry, paneer or egg, 1 roti.",
+        focus: "Try 10 squats and 10 pushups at home."
+      },
+      {
+        breakfast: "Oats with milk, black coffee.",
+        lunch: "2 roti, dal, cauliflower curry, salad.",
+        dinner: "Egg bhurji, tomato-cucumber salad, no rice.",
+        focus: "If craving comes, drink water first."
+      },
+      {
+        breakfast: "2 boiled eggs, banana.",
+        lunch: "1 cup rice, dal, mixed veg, small chicken portion.",
+        dinner: "Chicken soup or dal soup, 1 roti.",
+        focus: "One bad meal should not ruin the whole day. Stay steady."
+      },
+      {
+        breakfast: "Omelette with onion and tomato, 1 fruit.",
+        lunch: "2 roti, dal, pumpkin sabji, curd.",
+        dinner: "2 eggs, salad, no rice.",
+        focus: "Mid month point. Check your average weekly weight."
+      },
+      {
+        breakfast: "Oats with milk, banana.",
+        lunch: "1 cup rice, dal, green vegetables, chicken small portion.",
+        dinner: "Paneer or egg curry, salad, 1 roti.",
+        focus: "Try to eat dinner before 8:30 PM."
+      },
+      {
+        breakfast: "2 boiled eggs, black tea, apple.",
+        lunch: "2 roti, dal, bean curry, cucumber slices.",
+        dinner: "Light soup, egg, no rice.",
+        focus: "No momo today even if friends eat outside."
+      },
+      {
+        breakfast: "Oats, milk, peanuts.",
+        lunch: "1 cup rice, dal, vegetable curry, fish or chicken.",
+        dinner: "2 eggs, salad, 1 roti.",
+        focus: "Add a 5 minute walk every 2 hours in office."
+      },
+      {
+        breakfast: "2 egg omelette, banana.",
+        lunch: "2 roti, dal, mixed veg, curd.",
+        dinner: "Chicken small portion, sauteed vegetables, no rice.",
+        focus: "Stay low oil today."
+      },
+      {
+        breakfast: "Oats with milk, 1 fruit.",
+        lunch: "1 cup rice, dal, spinach, salad.",
+        dinner: "2 boiled eggs, cucumber-carrot salad, 1 roti.",
+        focus: "Your belly goes down by consistency, not tricks."
+      },
+      {
+        breakfast: "2 eggs, black coffee, banana.",
+        lunch: "2 roti, dal, pumpkin or bottle gourd sabji, small chicken portion.",
+        dinner: "Dal soup, salad, no rice.",
+        focus: "Last 10 days. Stay clean and simple."
+      },
+      {
+        breakfast: "Oats with milk, black tea without sugar.",
+        lunch: "1 cup rice, dal, mixed vegetables, curd.",
+        dinner: "Paneer or egg bhurji, 1 roti, salad.",
+        focus: "No packaged juice today."
+      },
+      {
+        breakfast: "2 boiled eggs, apple.",
+        lunch: "2 roti, dal, bean or cabbage curry, salad.",
+        dinner: "Chicken soup, no rice.",
+        focus: "Walk after lunch if possible, even 10 minutes."
+      },
+      {
+        breakfast: "Oats, milk, banana.",
+        lunch: "1 cup rice, dal, green veg, small fish or chicken.",
+        dinner: "2 eggs, cucumber salad, 1 roti.",
+        focus: "Keep salt moderate and drink more water."
+      },
+      {
+        breakfast: "2 egg omelette, black tea.",
+        lunch: "2 roti, dal, mixed veg, curd.",
+        dinner: "Paneer, salad, no rice.",
+        focus: "No cheat meal today."
+      },
+      {
+        breakfast: "Oats with milk, banana.",
+        lunch: "1 cup rice, dal, vegetable curry, chicken small portion.",
+        dinner: "Light dal, salad, 1 roti.",
+        focus: "Sit less today. Stand and stretch a bit in office."
+      },
+      {
+        breakfast: "2 boiled eggs, 1 fruit, black coffee.",
+        lunch: "2 roti, dal, pumpkin or spinach, cucumber slices.",
+        dinner: "Egg curry, no rice.",
+        focus: "Late night eating is not allowed today."
+      },
+      {
+        breakfast: "Oats, milk, peanuts.",
+        lunch: "1 cup rice, dal, mixed vegetables, curd.",
+        dinner: "Chicken or paneer, salad, 1 roti.",
+        focus: "This is where many people quit. You keep going."
+      },
+      {
+        breakfast: "2 egg omelette, banana.",
+        lunch: "2 roti, dal, bean curry, small chicken portion.",
+        dinner: "2 boiled eggs, salad, no rice.",
+        focus: "Take your weight tomorrow morning with calm mind."
+      },
+      {
+        breakfast: "Oats with milk, 1 fruit.",
+        lunch: "1 cup rice, dal, green vegetables, salad.",
+        dinner: "Light soup, paneer or egg, 1 roti.",
+        focus: "Final day of the 30 day round. Review and repeat the cycle."
+      }
+    ];
+
+    const todayTitle = document.getElementById('todayTitle');
+    const dayBadge = document.getElementById('dayBadge');
+    const todayDate = document.getElementById('todayDate');
+    const breakfast = document.getElementById('breakfast');
+    const lunch = document.getElementById('lunch');
+    const dinner = document.getElementById('dinner');
+    const focus = document.getElementById('focus');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    const resetBtn = document.getElementById('resetBtn');
+    const weightInput = document.getElementById('weightInput');
+    const saveWeightBtn = document.getElementById('saveWeightBtn');
+    const weightStatus = document.getElementById('weightStatus');
+
+    const STORAGE_PLAN_START = 'fatloss-plan-start-date';
+    const STORAGE_WEIGHT_LOG = 'fatloss-weight-log';
+    const STORAGE_DAY_OVERRIDE = 'fatloss-day-override';
+
+    function getStartDate() {
+      let saved = localStorage.getItem(STORAGE_PLAN_START);
+      if (!saved) {
+        const now = new Date();
+        const yyyy = now.getFullYear();
+        const mm = String(now.getMonth() + 1).padStart(2, '0');
+        const dd = String(now.getDate()).padStart(2, '0');
+        saved = `${yyyy}-${mm}-${dd}`;
+        localStorage.setItem(STORAGE_PLAN_START, saved);
+      }
+      return new Date(saved + 'T00:00:00');
+    }
+
+    function daysBetween(start, end) {
+      const oneDay = 1000 * 60 * 60 * 24;
+      return Math.floor((end - start) / oneDay);
+    }
+
+    function getTodayIndex() {
+      const start = getStartDate();
+      const now = new Date();
+      const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+      const diff = daysBetween(start, today);
+      if (diff < 0) return 0;
+      if (diff > 29) return 29;
+      return diff;
+    }
+
+    function getCurrentIndex() {
+      const saved = localStorage.getItem(STORAGE_DAY_OVERRIDE);
+      if (saved !== null) return Math.min(29, Math.max(0, Number(saved)));
+      return getTodayIndex();
+    }
+
+    function formatDate(index) {
+      const start = getStartDate();
+      const d = new Date(start);
+      d.setDate(start.getDate() + index);
+      return d.toLocaleDateString(undefined, {
+        weekday: 'long',
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric'
+      });
+    }
+
+    function render(index) {
+      const item = plan[index];
+      breakfast.textContent = item.breakfast;
+      lunch.textContent = item.lunch;
+      dinner.textContent = item.dinner;
+      focus.textContent = item.focus;
+      dayBadge.textContent = `Day ${index + 1} of 30`;
+      todayDate.textContent = formatDate(index);
+
+      const todayIndex = getTodayIndex();
+      todayTitle.textContent = index === todayIndex ? 'Today\'s Plan' : `Viewing Day ${index + 1}`;
+
+      prevBtn.disabled = index === 0;
+      nextBtn.disabled = index === 29;
+      prevBtn.style.opacity = index === 0 ? '0.5' : '1';
+      nextBtn.style.opacity = index === 29 ? '0.5' : '1';
+    }
+
+    function saveWeight() {
+      const val = parseFloat(weightInput.value);
+      if (isNaN(val) || val < 30 || val > 200) {
+        weightStatus.textContent = 'Please enter a valid weight in kg.';
+        return;
+      }
+
+      const logs = JSON.parse(localStorage.getItem(STORAGE_WEIGHT_LOG) || '{}');
+      const today = new Date();
+      const key = `${today.getFullYear()}-${String(today.getMonth() + 1).padStart(2, '0')}-${String(today.getDate()).padStart(2, '0')}`;
+      logs[key] = val;
+      localStorage.setItem(STORAGE_WEIGHT_LOG, JSON.stringify(logs));
+      weightStatus.textContent = `Saved: ${val} kg for ${key}`;
+      weightInput.value = '';
+    }
+
+    function loadLatestWeight() {
+      const logs = JSON.parse(localStorage.getItem(STORAGE_WEIGHT_LOG) || '{}');
+      const keys = Object.keys(logs).sort();
+      if (!keys.length) {
+        weightStatus.textContent = 'No weight saved yet.';
+        return;
+      }
+      const latest = keys[keys.length - 1];
+      weightStatus.textContent = `Latest saved weight: ${logs[latest]} kg on ${latest}`;
+    }
+
+    prevBtn.addEventListener('click', () => {
+      const current = getCurrentIndex();
+      const nextIndex = Math.max(0, current - 1);
+      localStorage.setItem(STORAGE_DAY_OVERRIDE, String(nextIndex));
+      render(nextIndex);
+    });
+
+    nextBtn.addEventListener('click', () => {
+      const current = getCurrentIndex();
+      const nextIndex = Math.min(29, current + 1);
+      localStorage.setItem(STORAGE_DAY_OVERRIDE, String(nextIndex));
+      render(nextIndex);
+    });
+
+    resetBtn.addEventListener('click', () => {
+      localStorage.removeItem(STORAGE_DAY_OVERRIDE);
+      render(getTodayIndex());
+    });
+
+    saveWeightBtn.addEventListener('click', saveWeight);
+
+    render(getCurrentIndex());
+    loadLatestWeight();
+  </script>
+</body>
+</html>
