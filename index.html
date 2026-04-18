@@ -7,44 +7,47 @@
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
   <meta name="apple-mobile-web-app-title" content="FitTiffin" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet" />
   <link rel="manifest" href="manifest.json" />
   <title>FitTiffin - 30 Day Weight Loss</title>
   <style>
     :root {
-      --bg: #f0f4f8;
-      --card: #ffffff;
-      --text: #0f172a;
-      --muted: #64748b;
-      --accent: #2563eb;
-      --accent2: #7c3aed;
-      --accent-soft: #dbeafe;
-      --good: #059669;
-      --good-soft: #d1fae5;
-      --warn: #d97706;
-      --warn-soft: #fef3c7;
-      --danger: #dc2626;
-      --danger-soft: #fee2e2;
-      --border: #e2e8f0;
+      --bg: #f6f3fb;
+      --card: #fffbff;
+      --text: #1d1b20;
+      --muted: #49454f;
+      --accent: #65558f;
+      --accent2: #7f67be;
+      --accent-soft: #e8def8;
+      --good: #2e7d32;
+      --good-soft: #d9f2d9;
+      --warn: #a05d00;
+      --warn-soft: #ffe0b3;
+      --danger: #ba1a1a;
+      --danger-soft: #ffdad6;
+      --border: #d0cdd6;
       --shadow: 0 4px 20px rgba(0,0,0,0.06);
       --shadow-lg: 0 10px 40px rgba(0,0,0,0.1);
-      --radius: 16px;
-      --radius-sm: 12px;
+      --radius: 24px;
+      --radius-sm: 16px;
       --safe-top: env(safe-area-inset-top, 0px);
       --safe-bottom: env(safe-area-inset-bottom, 0px);
     }
     .dark {
-      --bg: #0f172a;
-      --card: #1e293b;
-      --text: #f1f5f9;
-      --muted: #94a3b8;
-      --border: #334155;
+      --bg: #141218;
+      --card: #211f26;
+      --text: #e6e0e9;
+      --muted: #cac4d0;
+      --border: #49454f;
       --shadow: 0 4px 20px rgba(0,0,0,0.3);
       --shadow-lg: 0 10px 40px rgba(0,0,0,0.4);
     }
     * { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
     body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
       background: var(--bg);
       color: var(--text);
       -webkit-tap-highlight-color: transparent;
@@ -65,12 +68,22 @@
       padding: 14px 0 10px;
     }
     .header h1 {
-      font-size: 22px;
-      font-weight: 800;
+      font-size: 24px;
+      font-weight: 900;
       background: linear-gradient(135deg, var(--accent), var(--accent2));
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
+    }
+    .material-symbols-rounded {
+      font-variation-settings: 'FILL' 0, 'wght' 500, 'GRAD' 0, 'opsz' 24;
+      font-size: 22px;
+      line-height: 1;
+      vertical-align: middle;
+      user-select: none;
+    }
+    .icon-filled {
+      font-variation-settings: 'FILL' 1, 'wght' 500, 'GRAD' 0, 'opsz' 24;
     }
     .header-actions { display: flex; gap: 8px; }
     .icon-btn {
@@ -107,7 +120,7 @@
       border-radius: 10px;
       transition: all 0.2s;
     }
-    .tab-btn .tab-icon { font-size: 22px; }
+    .tab-btn .tab-icon { font-size: 20px; }
     .tab-btn.active { color: var(--accent); }
     .tab-btn.active .tab-icon { transform: scale(1.1); }
     .section { display: none; }
@@ -265,7 +278,16 @@
       display: flex; align-items: center; justify-content: center;
       gap: 8px; margin: 14px 0;
     }
-    .streak-fire { font-size: 40px; }
+    .streak-fire {
+      width: 48px;
+      height: 48px;
+      border-radius: 16px;
+      background: var(--accent-soft);
+      color: var(--accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
     .streak-num { font-size: 42px; font-weight: 800; }
     .streak-label { font-size: 13px; color: var(--muted); }
     .weight-log {
@@ -338,6 +360,10 @@
     }
     .rules-list li:last-child { border-bottom: none; }
     .rule-icon { font-size: 18px; flex-shrink: 0; margin-top: 1px; }
+    .rule-icon .material-symbols-rounded {
+      font-size: 20px;
+      color: var(--accent);
+    }
     .quote-card {
       background: linear-gradient(135deg, var(--accent), var(--accent2));
       color: white; border-radius: var(--radius);
@@ -412,7 +438,7 @@
     <div class="header">
       <h1>FitTiffin</h1>
       <div class="header-actions">
-        <button class="icon-btn" id="darkToggle" title="Dark Mode">&#x1F319;</button>
+        <button class="icon-btn" id="darkToggle" title="Dark Mode"><span class="material-symbols-rounded" id="darkToggleIcon">dark_mode</span></button>
       </div>
     </div>
     <div class="section active" id="sec-home">
@@ -552,13 +578,13 @@
           <span class="badge orange">Consistency</span>
         </div>
         <div class="streak-display">
-          <div class="streak-fire">&#x1F525;</div>
+          <div class="streak-fire"><span class="material-symbols-rounded icon-filled">local_fire_department</span></div>
           <div>
             <div class="streak-num" id="streakNum">0</div>
             <div class="streak-label">days in a row</div>
           </div>
         </div>
-        <button class="btn-primary" style="width:100%;" id="markDoneBtn">&#x2713; Mark Today Complete</button>
+        <button class="btn-primary" style="width:100%;" id="markDoneBtn"><span class="material-symbols-rounded">check_circle</span> Mark Today Complete</button>
         <p class="muted" style="margin-top:8px;text-align:center;" id="streakMsg"></p>
       </div>
     </div>
@@ -569,16 +595,16 @@
           <span class="badge green">Follow Daily</span>
         </div>
         <ul class="rules-list">
-          <li><span class="rule-icon">&#x1F37D;</span> Only 3 main meals a day. No random snacking.</li>
-          <li><span class="rule-icon">&#x1F4A7;</span> Drink 2.5 to 3 liters of water daily.</li>
-          <li><span class="rule-icon">&#x1F6B6;</span> Walk at least 30 to 40 minutes daily.</li>
-          <li><span class="rule-icon">&#x2615;</span> Tea/coffee with no sugar or use very little.</li>
-          <li><span class="rule-icon">&#x1F95F;</span> Momo or chowmein maximum once a week only.</li>
-          <li><span class="rule-icon">&#x1F35A;</span> At lunch: rice OR roti, not both together.</li>
-          <li><span class="rule-icon">&#x1F319;</span> Dinner should be lighter than lunch.</li>
-          <li><span class="rule-icon">&#x23F0;</span> Try to finish dinner before 8:30 PM.</li>
-          <li><span class="rule-icon">&#x1F6CC;</span> Sleep 7-8 hours. Rest helps fat loss.</li>
-          <li><span class="rule-icon">&#x1F4F1;</span> Do not eat while looking at phone or TV.</li>
+          <li><span class="rule-icon"><span class="material-symbols-rounded">restaurant</span></span> Only 3 main meals a day. No random snacking.</li>
+          <li><span class="rule-icon"><span class="material-symbols-rounded">water_drop</span></span> Drink 2.5 to 3 liters of water daily.</li>
+          <li><span class="rule-icon"><span class="material-symbols-rounded">directions_walk</span></span> Walk at least 30 to 40 minutes daily.</li>
+          <li><span class="rule-icon"><span class="material-symbols-rounded">coffee</span></span> Tea/coffee with no sugar or use very little.</li>
+          <li><span class="rule-icon"><span class="material-symbols-rounded">ramen_dining</span></span> Momo or chowmein maximum once a week only.</li>
+          <li><span class="rule-icon"><span class="material-symbols-rounded">rice_bowl</span></span> At lunch: rice OR roti, not both together.</li>
+          <li><span class="rule-icon"><span class="material-symbols-rounded">bedtime</span></span> Dinner should be lighter than lunch.</li>
+          <li><span class="rule-icon"><span class="material-symbols-rounded">schedule</span></span> Try to finish dinner before 8:30 PM.</li>
+          <li><span class="rule-icon"><span class="material-symbols-rounded">hotel</span></span> Sleep 7-8 hours. Rest helps fat loss.</li>
+          <li><span class="rule-icon"><span class="material-symbols-rounded">smartphone</span></span> Do not eat while looking at phone or TV.</li>
         </ul>
       </div>
       <div class="card">
@@ -630,16 +656,16 @@
   </div>
   <nav class="tab-bar">
     <button class="tab-btn active" data-tab="home">
-      <span class="tab-icon">&#x1F3E0;</span> Home
+      <span class="tab-icon material-symbols-rounded">home</span> Home
     </button>
     <button class="tab-btn" data-tab="track">
-      <span class="tab-icon">&#x2696;</span> Track
+      <span class="tab-icon material-symbols-rounded">monitor_weight</span> Track
     </button>
     <button class="tab-btn" data-tab="habits">
-      <span class="tab-icon">&#x1F4AA;</span> Habits
+      <span class="tab-icon material-symbols-rounded">fitness_center</span> Habits
     </button>
     <button class="tab-btn" data-tab="rules">
-      <span class="tab-icon">&#x1F4CB;</span> Rules
+      <span class="tab-icon material-symbols-rounded">checklist</span> Rules
     </button>
   </nav>
   <script>
@@ -647,7 +673,7 @@
 
     var quotes=[{text:"The only bad workout is the one that didn't happen.",author:""},{text:"Your body can stand almost anything. It's your mind you have to convince.",author:""},{text:"Discipline is choosing between what you want now and what you want most.",author:"Abraham Lincoln"},{text:"Small daily improvements over time lead to stunning results.",author:"Robin Sharma"},{text:"You don't have to be extreme, just consistent.",author:""},{text:"The pain you feel today will be the strength you feel tomorrow.",author:""},{text:"It's not about perfect. It's about effort.",author:"Jillian Michaels"},{text:"Take care of your body. It's the only place you have to live.",author:"Jim Rohn"},{text:"A one-hour workout is 4% of your day. No excuses.",author:""},{text:"Success is the sum of small efforts repeated day in and day out.",author:"Robert Collier"},{text:"Don't stop until you're proud.",author:""},{text:"You are one decision away from a totally different life.",author:""},{text:"Weight loss is not a physical challenge, it's a mental one.",author:""},{text:"Motivation gets you started. Habit keeps you going.",author:"Jim Ryun"},{text:"Progress, not perfection.",author:""}];
 
-    var exercises=[{icon:"\u{1F6B6}",name:"30 min Walk",key:"walk"},{icon:"\u{1F3C3}",name:"Jogging",key:"jog"},{icon:"\u{1F4AA}",name:"Push-ups",key:"pushup"},{icon:"\u{1F9B5}",name:"Squats",key:"squat"},{icon:"\u{1F9D8}",name:"Stretching",key:"stretch"},{icon:"\u{1F6B4}",name:"Cycling",key:"cycle"}];
+    var exercises=[{icon:"directions_walk",name:"30 min Walk",key:"walk"},{icon:"directions_run",name:"Jogging",key:"jog"},{icon:"fitness_center",name:"Push-ups",key:"pushup"},{icon:"accessibility_new",name:"Squats",key:"squat"},{icon:"self_improvement",name:"Stretching",key:"stretch"},{icon:"pedal_bike",name:"Cycling",key:"cycle"}];
 
     var K={START:'ft-start',WEIGHT:'ft-weight',DAYOV:'ft-dayov',DARK:'ft-dark',WATER:'ft-water',MEALS:'ft-meals',STREAK:'ft-streak',FAST:'ft-fast',EXERCISE:'ft-exercise',STEPS:'ft-steps',HEIGHT:'ft-height'};
 
@@ -671,7 +697,7 @@
     function applyDark(on){
       document.documentElement.classList.toggle('dark',on);
       store(K.DARK,on);
-      darkToggle.innerHTML=on?'\u2600\uFE0F':'\uD83C\uDF19';
+      darkToggle.innerHTML=on?'<span class="material-symbols-rounded">light_mode</span>':'<span class="material-symbols-rounded">dark_mode</span>';
       darkToggle2.classList.toggle('on',on);
       document.querySelector('meta[name="theme-color"]').content=on?'#0f172a':'#2563eb';
     }
@@ -716,7 +742,8 @@
 
     // RENDER MEALS
     var mealTypes=['breakfast','lunch','dinner','focus'];
-    var mealLabels={breakfast:'\uD83C\uDF05 Breakfast',lunch:'\uD83C\uDF71 Lunch Tiffin',dinner:'\uD83C\uDF19 Dinner',focus:'\uD83C\uDFAF Today Focus'};
+    var mealLabels={breakfast:'Breakfast',lunch:'Lunch Tiffin',dinner:'Dinner',focus:'Today Focus'};
+    var mealIcons={breakfast:'wb_sunny',lunch:'lunch_dining',dinner:'nights_stay',focus:'target'};
 
     function renderDay(index){
       var item=plan[index];
@@ -741,7 +768,7 @@
         block.className='meal-block';
         var checked=!!dayChecks[type];
         var checkHtml=type!=='focus'?'<button class="meal-check '+(checked?'done':'')+'" data-meal="'+type+'" data-day="'+index+'">'+(checked?'\u2713':'')+'</button>':'';
-        block.innerHTML='<div class="meal-header"><h3>'+mealLabels[type]+'</h3>'+checkHtml+'</div><div class="meal-text" style="'+(checked&&type!=='focus'?'text-decoration:line-through;opacity:0.5;':'')+'">'+item[type]+'</div>';
+        block.innerHTML='<div class="meal-header"><h3><span class="material-symbols-rounded" style="font-size:18px;margin-right:6px;">'+mealIcons[type]+'</span>'+mealLabels[type]+'</h3>'+checkHtml+'</div><div class="meal-text" style="'+(checked&&type!=='focus'?'text-decoration:line-through;opacity:0.5;':'')+'">'+item[type]+'</div>';
         container.appendChild(block);
       });
 
@@ -912,7 +939,7 @@
         (function(idx){
           var g=document.createElement('div');
           g.className='water-glass'+(idx<count?' filled':'');
-          g.textContent=idx<count?'\uD83D\uDCA7':'\uD83E\uDD5B';
+          g.innerHTML=idx<count?'<span class="material-symbols-rounded icon-filled">water_drop</span>':'<span class="material-symbols-rounded">local_drink</span>';
           g.addEventListener('click',function(){
             var d=load(K.WATER,{});
             d[today]=idx<(d[today]||0)?idx:idx+1;
@@ -968,7 +995,7 @@
       exercises.forEach(function(ex){
         var btn=document.createElement('button');
         btn.className='exercise-btn'+(todayEx.indexOf(ex.key)>=0?' selected':'');
-        btn.innerHTML='<span class="ex-icon">'+ex.icon+'</span>'+ex.name;
+        btn.innerHTML='<span class="ex-icon material-symbols-rounded">'+ex.icon+'</span>'+ex.name;
         btn.addEventListener('click',function(){
           var d=load(K.EXERCISE,{});var t=d[today]||[];
           var idx=t.indexOf(ex.key);
@@ -1008,7 +1035,7 @@
       document.getElementById('streakNum').textContent=streak;
       document.getElementById('hsStreak').textContent=streak;
       var done=data[todayKey()];
-      document.getElementById('markDoneBtn').textContent=done?'\u2713 Completed Today':'\u2713 Mark Today Complete';
+      document.getElementById('markDoneBtn').innerHTML=done?'<span class="material-symbols-rounded">task_alt</span> Completed Today':'<span class="material-symbols-rounded">check_circle</span> Mark Today Complete';
       document.getElementById('markDoneBtn').style.background=done?'var(--good)':'var(--accent)';
       document.getElementById('streakMsg').textContent=done?'Great job! Keep it going tomorrow.':streak>0?"Don't break your "+streak+'-day streak!':'Start your streak today!';
     }
