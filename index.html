@@ -271,6 +271,10 @@
       transition: border-color 0.2s;
     }
     input:focus { border-color: var(--accent); }
+    .input-hint {
+      font-size: 11px; color: var(--muted); margin-top: 4px;
+      margin-bottom: 8px; line-height: 1.3;
+    }
     .input-row {
       display: flex; gap: 8px; margin-top: 10px;
     }
@@ -670,8 +674,14 @@
             <option value="female">Female</option>
           </select>
           <input type="number" step="0.1" id="profileWeight" placeholder="Current weight (kg)" />
-          <input type="number" id="profileHeight" placeholder="Height (cm)" />
-          <input type="number" step="0.1" id="profileHeightIn" placeholder="Height (inch)" />
+          <div>
+            <input type="number" id="profileHeight" placeholder="Height (cm)" />
+            <p class="input-hint">e.g., 170 cm</p>
+          </div>
+          <div>
+            <input type="number" step="0.1" id="profileHeightIn" placeholder="Height (inch)" />
+            <p class="input-hint">e.g., 5.6 or 5,8 (feet.inches)</p>
+          </div>
           <input type="number" step="0.1" id="profileGoalWeight" placeholder="Goal weight (kg)" class="full" />
           <select id="profileWorkType">
             <option value="desk">Desk job</option>
@@ -849,8 +859,14 @@
           <option value="female">Female</option>
         </select>
         <input type="number" step="0.1" id="onbWeight" placeholder="Current weight (kg)" />
-        <input type="number" id="onbHeight" placeholder="Height (cm)" />
-        <input type="number" step="0.1" id="onbHeightIn" placeholder="Height (inch)" />
+        <div>
+          <input type="number" id="onbHeight" placeholder="Height (cm)" />
+          <p class="input-hint">e.g., 170 cm</p>
+        </div>
+        <div>
+          <input type="number" step="0.1" id="onbHeightIn" placeholder="Height (inch)" />
+          <p class="input-hint">e.g., 5.6 or 5,8 (feet.inches)</p>
+        </div>
         <input type="number" step="0.1" id="onbGoalWeight" class="full" placeholder="Goal weight (kg)" />
         <select id="onbWorkType">
           <option value="desk">Desk job</option>
@@ -1210,9 +1226,23 @@
       return arr[index%arr.length];
     }
 
+    function parseInchesFormat(inchStr){
+      if(!inchStr)return 0;
+      var str=String(inchStr).trim();
+      if(str.includes(',')){
+        var parts=str.split(',');
+        if(parts.length===2){
+          var feet=Number(parts[0]);
+          var inches=Number(parts[1]);
+          return feet*12+inches;
+        }
+      }
+      return Number(str);
+    }
+
     function buildProfileFromPrefix(prefix){
       var heightCmRaw=Number(document.getElementById(prefix+'Height').value);
-      var heightInRaw=Number(document.getElementById(prefix+'HeightIn').value);
+      var heightInRaw=parseInchesFormat(document.getElementById(prefix+'HeightIn').value);
       var resolvedHeightCm=heightCmRaw>0?heightCmRaw:(heightInRaw>0?(heightInRaw*2.54):0);
       var resolvedHeightIn=heightInRaw>0?heightInRaw:(heightCmRaw>0?Number((heightCmRaw/2.54).toFixed(1)):0);
       return {
@@ -1383,7 +1413,7 @@
     document.getElementById('saveProfileBtn').addEventListener('click',function(){
       var profile=buildProfileFromPrefix('profile');
       if(!validateProfile(profile)){
-        document.getElementById('profileStatus').textContent='Please enter valid age, height (cm or inches), weight and goal values.';
+        document.getElementById('profileStatus').innerHTML='<span style="color:var(--danger)">❌ Height: Enter cm (e.g., 170) or inches (e.g., 5.6 or 5,8). Age: 12-90. Weight/Goal: 30-250 kg.</span>';
         return;
       }
       saveProfileAndRefresh(profile,'profileStatus');
@@ -1393,7 +1423,7 @@
     document.getElementById('onbSaveBtn').addEventListener('click',function(){
       var profile=buildProfileFromPrefix('onb');
       if(!validateProfile(profile)){
-        document.getElementById('onbStatus').textContent='Please enter valid age, height (cm or inches), weight and goal values.';
+        document.getElementById('onbStatus').innerHTML='<span style="color:var(--danger)">❌ Height: Enter cm (e.g., 170) or inches (e.g., 5.6 or 5,8). Age: 12-90. Weight/Goal: 30-250 kg.</span>';
         return;
       }
       saveProfileAndRefresh(profile,'onbStatus');
@@ -1520,6 +1550,47 @@
         location.reload();
       }
     });
+
+    // HEIGHT CONVERSION HINTS
+    function setupHeightConversionHints(prefix){
+      var cmInput=document.getElementById(prefix+'Height');
+      var inInput=document.getElementById(prefix+'HeightIn');
+      var cmHintEl=cmInput.parentElement.querySelector('.input-hint');
+      var inHintEl=inInput.parentElement.querySelector('.input-hint');
+      
+      cmInput?.addEventListener('input',function(){
+        var cm=Number(this.value);
+        if(cm>0){
+          var inches=Number((cm/2.54).toFixed(1));
+          cmHintEl.textContent='✓ '+cm+' cm = '+inches+' inches';
+          cmHintEl.style.color='var(--good)';
+        }else{
+          cmHintEl.textContent='e.g., 170 cm';
+          cmHintEl.style.color='var(--muted)';
+        }
+      });
+      
+      inInput?.addEventListener('input',function(){
+        var inchStr=this.value;
+        if(inchStr){
+          var inches=parseInchesFormat(inchStr);
+          if(inches>0){
+            var cm=Number((inches*2.54).toFixed(1));
+            inHintEl.textContent='✓ '+inches+'" = '+cm+' cm';
+            inHintEl.style.color='var(--good)';
+          }else{
+            inHintEl.textContent='e.g., 5.6 or 5,8 (feet.inches)';
+            inHintEl.style.color='var(--muted)';
+          }
+        }else{
+          inHintEl.textContent='e.g., 5.6 or 5,8 (feet.inches)';
+          inHintEl.style.color='var(--muted)';
+        }
+      });
+    }
+    
+    setupHeightConversionHints('profile');
+    setupHeightConversionHints('onb');
 
     // SERVICE WORKER
     if('serviceWorker' in navigator){navigator.serviceWorker.register('sw.js').catch(function(){});}
