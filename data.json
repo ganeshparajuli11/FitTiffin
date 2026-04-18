@@ -1,0 +1,123 @@
+{
+  "activityMultipliers": {
+    "desk": 1.2,
+    "light": 1.35,
+    "moderate": 1.5,
+    "hard": 1.7
+  },
+  "exerciseBonus": {
+    "none": 0,
+    "light": 0.04,
+    "regular": 0.08,
+    "daily": 0.12
+  },
+  "deficitByBmi": {
+    "underweight": 0.06,
+    "normal": 0.12,
+    "overweight": 0.18,
+    "obese": 0.22
+  },
+  "tips": {
+    "underweight": [
+      "Use only a very light calorie deficit.",
+      "Focus on strength training and recovery.",
+      "Keep protein intake high and meals structured."
+    ],
+    "normal": [
+      "Use mild calorie deficit and high consistency.",
+      "Track weekly average weight, not one-day changes.",
+      "Keep hydration and sleep quality stable."
+    ],
+    "overweight": [
+      "Use moderate deficit and increase daily movement.",
+      "Limit ultra-processed foods and late-night meals.",
+      "Prioritize protein and fiber to control appetite."
+    ],
+    "obese": [
+      "Start with sustainable portions and fixed meal times.",
+      "Prefer low-oil cooking and whole foods.",
+      "Increase activity slowly to avoid injury."
+    ]
+  },
+  "monthlyFramework": [
+    "Week 1: standardize meal timing and water intake.",
+    "Week 2: improve step count and protein adherence.",
+    "Week 3: tighten calorie leakage from snacks/drinks.",
+    "Week 4: review trend, adjust intake, and repeat cycle."
+  ],
+  "dailyMeals": {
+    "mixed": {
+      "breakfast": [
+        "2 eggs, oats, 1 fruit",
+        "Greek curd bowl + banana + mixed nuts",
+        "Veg omelette + 1 roti"
+      ],
+      "lunch": [
+        "2 roti + dal + sabji + salad",
+        "Rice + fish/chicken + green veg",
+        "Paneer + dal + cucumber salad"
+      ],
+      "dinner": [
+        "Grilled chicken + sauteed vegetables",
+        "Egg bhurji + salad + 1 roti",
+        "Light dal soup + paneer"
+      ],
+      "snack": [
+        "Roasted chana",
+        "Unsweetened tea/coffee",
+        "1 fruit + peanuts"
+      ]
+    },
+    "egg": {
+      "breakfast": [
+        "2 to 3 eggs + oats",
+        "Egg sandwich on whole wheat",
+        "Boiled eggs + fruit"
+      ],
+      "lunch": [
+        "2 roti + dal + sabji",
+        "Rice + dal + egg curry",
+        "Paneer + mixed veg"
+      ],
+      "dinner": [
+        "Egg bhurji + salad",
+        "Egg curry + 1 roti",
+        "Dal soup + boiled eggs"
+      ],
+      "snack": [
+        "Roasted makhana",
+        "Buttermilk",
+        "Fruit + seeds"
+      ]
+    },
+    "veg": {
+      "breakfast": [
+        "Oats + milk + nuts",
+        "Besan chilla + curd",
+        "Poha + sprouts"
+      ],
+      "lunch": [
+        "2 roti + dal + sabji + salad",
+        "Brown rice + rajma/chana + veg",
+        "Paneer bhurji + roti"
+      ],
+      "dinner": [
+        "Paneer + sauteed veg",
+        "Dal soup + stir-fry veg",
+        "Khichdi + salad"
+      ],
+      "snack": [
+        "Sprouts chaat",
+        "Roasted chana",
+        "Fruit + nuts"
+      ]
+    }
+  },
+  "actionTips": [
+    "Drink 2.5 to 3 liters water.",
+    "Hit 8000+ steps unless sick.",
+    "No sugar drinks today.",
+    "Finish dinner before 8:30 PM.",
+    "Sleep target: 7 to 8 hours."
+  ]
+}

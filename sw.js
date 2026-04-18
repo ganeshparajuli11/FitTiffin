@@ -1,8 +1,10 @@
-const CACHE_NAME = 'fittiffin-v2';
+const CACHE_NAME = 'fittiffin-v4';
 const ASSETS = [
   '/',
   '/index.html',
-  '/manifest.json'
+  '/manifest.json',
+  '/data.json',
+  '/app-icon.svg'
 ];
 
 self.addEventListener('install', e => {
